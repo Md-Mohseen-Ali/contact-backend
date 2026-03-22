@@ -1,19 +1,17 @@
 package com.portfolio.contact.model;
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
+import jakarta.persistence.*;
 import lombok.Data;
 
+@Entity
 @Data
 public class Contact {
 
-    @NotBlank(message = "Name is required")
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO) 
+    private Long id;
+
     private String name;
-
-    @Email(message = "Invalid email")
-    @NotBlank(message = "Email is required")
     private String email;
-
-    @NotBlank(message = "Message cannot be empty")
     private String message;
 }
